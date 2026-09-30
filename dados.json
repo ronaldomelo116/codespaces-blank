@@ -1,0 +1,323 @@
+[
+    {
+        "id": 1,
+        "title": "Fundamentos: Sistema de Delivery",
+        "description": "Variáveis, Tipos e Operadores em um App de Pizzaria.",
+        "icon": "bi-shop",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Para armazenar o preço fixo da taxa de entrega que nunca muda durante a sessão, qual declaração você deve usar?",
+                "options": ["let taxa = 5.00;", "const taxa = 5.00;", "var taxa = 5.00;", "static taxa = 5.00;"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Se você precisa concatenar o nome do cliente com o total do pedido em uma mensagem, qual é a sintaxe mais limpa (Template Literals)?",
+                "options": ["'Olá ' + cliente + ', total: R$' + total", "\"Olá \" + cliente + \", total: R$\" + total", "`Olá ${cliente}, total: R$${total}`", "String('Olá ', cliente, ' total: R$', total)"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Como declarar uma variável booleana indicando que a loja está aberta para receber pedidos?",
+                "options": ["const isOpen = 'true';", "let isOpen = true;", "var isOpen = 1;", "bool isOpen = true;"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "O cliente adicionou um item de R$ 35,00 e a entrega custa R$ 5,00. Como garantir que o JS some os valores ao invés de juntar os textos?",
+                "options": ["Number(preco) + Number(frete)", "preco.concat(frete)", "parseString(preco + frete)", "preco && frete"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Qual operador verifica se o valor total do pedido é estritamente igual (valor e tipo) a zero?",
+                "options": ["total = 0", "total == 0", "total === 0", "total != 0"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Como você declara um Array vazio para iniciar o carrinho de compras do usuário?",
+                "options": ["let carrinho = {};", "let carrinho = [];", "let carrinho = '';", "let carrinho = Array;"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Para verificar o tipo de dado da variável 'telefoneCliente', qual operador utilizamos?",
+                "options": ["typeof telefoneCliente", "type(telefoneCliente)", "checkType telefoneCliente", "telefoneCliente.type"],
+                "correctAnswer": 0
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Arrays e Objetos: Catálogo de Rádio",
+        "description": "Manipulando listas e propriedades para um agregador de rádios web.",
+        "icon": "bi-broadcast",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Como você acessa o nome da primeira rádio em uma array chamada 'estacoes'?",
+                "options": ["estacoes[1].nome", "estacoes[0].nome", "estacoes.primeiro.nome", "estacoes.nome[0]"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "O usuário adicionou uma nova estação de rádio aos favoritos. Qual método insere esse item no final do Array?",
+                "options": ["estacoes.unshift(novaRadio)", "estacoes.pop(novaRadio)", "estacoes.add(novaRadio)", "estacoes.push(novaRadio)"],
+                "correctAnswer": 3
+            },
+            {
+                "text": "Como remover a última rádio da lista de histórico de reprodução?",
+                "options": ["historico.removeLast()", "historico.pop()", "historico.shift()", "historico.delete()"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Você tem um objeto 'radioAtual = { nome: \"Sunset3D FM\", volume: 80 }'. Como alterar o volume para 100?",
+                "options": ["radioAtual[volume] = 100;", "radioAtual.volume = 100;", "radioAtual.set('volume', 100);", "radioAtual = { 100 };"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Qual método cria um NOVO array apenas com as rádios que têm o gênero 'Rock'?",
+                "options": ["estacoes.map()", "estacoes.reduce()", "estacoes.filter(r => r.genero === 'Rock')", "estacoes.find(r => r.genero === 'Rock')"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Qual método você usa para passar por todas as estações e renderizá-las no HTML, sem criar um novo array?",
+                "options": ["estacoes.forEach()", "estacoes.map()", "estacoes.loop()", "estacoes.every()"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Como você verifica quantas rádios estão cadastradas no array 'estacoes'?",
+                "options": ["estacoes.size", "estacoes.count()", "estacoes.length", "estacoes.total"],
+                "correctAnswer": 2
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Funções e Lógica: Cálculo de Rotas",
+        "description": "Criando funções para calcular preços de entrega baseados em distância.",
+        "icon": "bi-truck",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual é a sintaxe correta de uma Arrow Function que calcula o frete recebendo a 'distancia' como parâmetro?",
+                "options": ["const frete = function(distancia) => {}", "const frete = (distancia) => {}", "function frete(distancia) => {}", "arrow frete(distancia) {}"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Se a distância for maior que 10km, a entrega é bloqueada. Como escrever essa condicional?",
+                "options": ["if (distancia > 10) { return false; }", "if (distancia >= 10) { return false; }", "if distancia > 10 return false", "when (distancia > 10) { false }"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Como arredondar o valor final do frete (ex: 12.876) para apenas duas casas decimais em formato de string?",
+                "options": ["valor.round(2)", "Math.round(valor, 2)", "valor.toFixed(2)", "valor.decimals(2)"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Ao invés de usar 'if / else if / else' para definir taxas por bairro, qual estrutura é mais limpa para múltiplas condições fixas?",
+                "options": ["for loop", "while", "switch / case", "try / catch"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Como você chama/executa uma função nomeada 'calcularDistancia' passando os valores 5 e 10?",
+                "options": ["call calcularDistancia(5, 10);", "calcularDistancia(5, 10);", "run calcularDistancia[5, 10];", "calcularDistancia.start(5, 10);"],
+                "correctAnswer": 1
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Manipulação de DOM: Landing Page e Carrossel",
+        "description": "Interatividade em uma página de vendas de açaí (DOM e CSS).",
+        "icon": "bi-window",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Como selecionar o botão de 'Comprar' que possui o ID 'btn-buy'?",
+                "options": ["document.querySelector('#btn-buy')", "document.getElement('.btn-buy')", "document.selectId('btn-buy')", "window.find('#btn-buy')"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Para fazer o botão mudar visualmente ao ser clicado, como adicionamos a classe CSS 'active' a ele?",
+                "options": ["botao.className += 'active'", "botao.style.class = 'active'", "botao.classList.add('active')", "botao.css('active')"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Como alterar o texto de um título <h1> selecionado para 'Promoção de Açaí'?",
+                "options": ["titulo.value = 'Promoção de Açaí'", "titulo.textContent = 'Promoção de Açaí'", "titulo.html = 'Promoção de Açaí'", "titulo.text = 'Promoção de Açaí'"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Em um carrossel de imagens, qual método remove uma classe e adiciona outra alternadamente ao clicar (efeito toggle)?",
+                "options": ["elemento.classList.switch('visible')", "elemento.classList.toggle('visible')", "elemento.class.swap('visible')", "elemento.style.toggle('visible')"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Como ocultar completamente um banner promocional alterando seu CSS diretamente pelo JS?",
+                "options": ["banner.style.display = 'none';", "banner.hide();", "banner.style.visibility = 'hidden';", "banner.css.display = 'none';"],
+                "correctAnswer": 0
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Mini-Projeto: Controle de Estoque (EstoqueTools)",
+        "description": "Lógica de array para filtragem e extração de inventário.",
+        "icon": "bi-boxes",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Como você retorna a soma total dos valores de todos os produtos no estoque usando um único método de Array?",
+                "options": ["estoque.sum()", "estoque.map()", "estoque.reduce((total, item) => total + item.valor, 0)", "estoque.filter()"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Você usou OCR para ler uma nota fiscal e o texto veio como '  Item01  '. Como remover os espaços em branco das pontas?",
+                "options": ["texto.clean()", "texto.strip()", "texto.trim()", "texto.replace(' ', '')"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "O OCR retornou uma lista de itens separados por vírgula ('modem,roteador,cabo'). Como transformar isso em um Array?",
+                "options": ["texto.toArray(',')", "texto.split(',')", "Array.from(texto)", "texto.parse(',')"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Como verificar se a string extraída contém a palavra 'Roteador'?",
+                "options": ["texto.includes('Roteador')", "texto.has('Roteador')", "texto.find('Roteador')", "texto.search('Roteador')"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Para evitar erros de case-sensitive (maiúsculas/minúsculas) na busca, o que fazer com a string antes de comparar?",
+                "options": ["Usar texto.toSmall()", "Usar texto.toLowerCase()", "Usar texto.format()", "Usar texto.normalize()"],
+                "correctAnswer": 1
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Eventos: Integração com WhatsApp",
+        "description": "Gerenciando eventos de clique e envio de formulários.",
+        "icon": "bi-whatsapp",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Como escutar o clique no botão 'Finalizar Pedido'?",
+                "options": ["botao.onClick(function)", "botao.listen('click', function)", "botao.addEventListener('click', function)", "botao.onEvent('click', function)"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Ao submeter um formulário, a página recarrega automaticamente. Qual comando dentro do evento previne esse comportamento?",
+                "options": ["event.stop()", "event.halt()", "event.preventDefault()", "event.stopPropagation()"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Para enviar os dados do pedido via link do WhatsApp, precisamos formatar o texto para a URL. Qual função nativa usamos?",
+                "options": ["URLFormat(texto)", "encodeURIComponent(texto)", "toURL(texto)", "parseURI(texto)"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Como capturar o valor que o usuário digitou no campo de input com ID 'obs-pedido'?",
+                "options": ["document.querySelector('#obs-pedido').value", "document.querySelector('#obs-pedido').text", "document.querySelector('#obs-pedido').content", "document.querySelector('#obs-pedido').innerHTML"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Como abrir a URL do WhatsApp em uma nova aba do navegador via JavaScript?",
+                "options": ["window.redirect(url)", "window.open(url, '_blank')", "document.location = url", "browser.newTab(url)"],
+                "correctAnswer": 1
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Armazenamento: LocalStorage",
+        "description": "Salvando itens do carrinho e preferências do usuário de forma segura.",
+        "icon": "bi-device-hdd",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Como você salva o tema escolhido pelo usuário (ex: 'dark') no navegador para a próxima visita?",
+                "options": ["localStorage.save('tema', 'dark')", "localStorage.setItem('tema', 'dark')", "browser.storage.tema = 'dark'", "sessionStorage.push('tema', 'dark')"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "O LocalStorage só aceita Strings. Como salvar o array completo do carrinho de compras?",
+                "options": ["localStorage.setItem('carrinho', carrinho.toString())", "localStorage.setItem('carrinho', JSON.stringify(carrinho))", "localStorage.setItem('carrinho', Array.parse(carrinho))", "localStorage.setItem('carrinho', carrinho)"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Como recuperar os dados do carrinho e transformá-los de volta em um Array/Objeto JavaScript?",
+                "options": ["JSON.parse(localStorage.getItem('carrinho'))", "JSON.objectify(localStorage.getItem('carrinho'))", "Array.from(localStorage.getItem('carrinho'))", "localStorage.getObject('carrinho')"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "O cliente limpou o carrinho. Como remover APENAS o item 'carrinho' do LocalStorage, sem apagar o tema?",
+                "options": ["localStorage.clear()", "localStorage.delete('carrinho')", "localStorage.removeItem('carrinho')", "localStorage.carrinho = null"],
+                "correctAnswer": 2
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "APIs e Assincronismo: Buscando CEP",
+        "description": "Consultando a API do ViaCEP para preencher formulários de entrega automaticamente.",
+        "icon": "bi-cloud-arrow-down",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual função nativa do JavaScript moderno é utilizada para fazer requisições HTTP para APIs (como o ViaCEP)?",
+                "options": ["axios()", "ajax()", "fetch()", "get()"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "O fetch retorna uma Promise. Como declaramos uma função para esperar que essa Promise seja resolvida de forma limpa?",
+                "options": ["Usando function e .wait()", "Usando async e await", "Usando defer e sync", "Usando timeout()"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Após receber a resposta bruta do fetch, qual método extrai o corpo da resposta em formato JSON?",
+                "options": ["resposta.toJson()", "resposta.json()", "JSON.parse(resposta)", "resposta.body()"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Se a API estiver fora do ar ou o usuário sem internet, qual bloco de código captura esse erro em uma função async?",
+                "options": ["if / else", "try / catch", "then / catch", "error / handler"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Em 'fetch(url, { method: 'POST' })', para que serve o POST?",
+                "options": ["Para pegar dados da API", "Para enviar dados confidenciais na URL", "Para enviar novos dados para o servidor (como salvar um pedido)", "Para apagar dados no servidor"],
+                "correctAnswer": 2
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Projeto: Dashboard Canvas",
+        "description": "Renderizando gráficos de vendas reais e assinaturas em tela usando HTML5 Canvas.",
+        "icon": "bi-bar-chart",
+        "isMiniProject": true,
+        "questions": [
+            {
+                "text": "Para começar a desenhar no Canvas (ex: gerar um gráfico de barras), qual é o primeiro método que devemos chamar após selecionar o elemento?",
+                "options": ["canvas.start()", "canvas.getContext('2d')", "canvas.init('graphics')", "canvas.setRenderer('2d')"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Como desenhar um retângulo que representa a barra de vendas do mês usando o Contexto 2D (ctx)?",
+                "options": ["ctx.drawRect(x, y, width, height)", "ctx.rect(x, y, width, height)", "ctx.fillRect(x, y, width, height)", "ctx.createBox(x, y, width, height)"],
+                "correctAnswer": 2
+            },
+            {
+                "text": "Para mudar a cor da barra do gráfico para a cor da marca (ex: Azul), qual propriedade modificamos?",
+                "options": ["ctx.color = 'blue';", "ctx.fillStyle = 'blue';", "ctx.backgroundColor = 'blue';", "ctx.strokeColor = 'blue';"],
+                "correctAnswer": 1
+            },
+            {
+                "text": "Ao criar um painel de assinatura digital (onde o usuário desenha com o mouse), qual comando move a 'caneta' sem riscar a tela?",
+                "options": ["ctx.moveTo(x, y)", "ctx.lineTo(x, y)", "ctx.jumpTo(x, y)", "ctx.hover(x, y)"],
+                "correctAnswer": 0
+            },
+            {
+                "text": "Como apagar todo o conteúdo desenhado no Canvas (útil para o botão 'Limpar Gráfico' ou 'Refazer Assinatura')?",
+                "options": ["canvas.clear()", "ctx.eraseAll()", "ctx.clearRect(0, 0, canvas.width, canvas.height)", "ctx.reset()"],
+                "correctAnswer": 2
+            }
+        ]
+    }
+]

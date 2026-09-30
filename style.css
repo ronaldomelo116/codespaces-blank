@@ -1,0 +1,272 @@
+:root {
+    --js-yellow: #F7DF1E;
+    --js-black: #111111;
+    --dark-grey: #2A2A2A;
+    --light-grey: #F5F5F5;
+    --white: #FFFFFF;
+    --success: #28a745;
+    --error: #dc3545;
+    --font-main: 'Nunito', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--light-grey);
+    color: var(--js-black);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.app-header {
+    background-color: var(--js-black);
+    color: var(--js-yellow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-stats .stat {
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Dashboard Cards */
+.intro-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+    border: 2px solid #E0E0E0;
+}
+
+.modules-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.module-card {
+    background: var(--white);
+    border: 2px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.module-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--js-yellow);
+}
+
+.module-card.locked {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #e9ecef;
+}
+
+.module-info h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.module-info p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.module-icon {
+    font-size: 2rem;
+    color: var(--js-black);
+}
+
+/* Exercise Area */
+.hidden {
+    display: none !important;
+}
+
+#exercise-area {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--white);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-container {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    align-self: flex-start;
+    color: #666;
+}
+
+.progress-bar-container {
+    height: 12px;
+    background: #E0E0E0;
+    border-radius: 6px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--success);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.question-content {
+    flex-grow: 1;
+    margin-top: 20px;
+}
+
+.question-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.option-btn {
+    background: var(--white);
+    border: 2px solid #E0E0E0;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: var(--font-main);
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.option-btn:hover {
+    background: #f8f9fa;
+}
+
+.option-btn.selected {
+    border-color: var(--js-yellow);
+    background: rgba(247, 223, 30, 0.1);
+}
+
+.option-btn.correct {
+    border-color: var(--success);
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.option-btn.wrong {
+    border-color: var(--error);
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.btn-primary {
+    background: var(--js-yellow);
+    color: var(--js-black);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.btn-primary:disabled {
+    background: #E0E0E0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Adicione estas classes ao final do seu arquivo style.css existente */
+
+.text-center {
+    text-align: center;
+}
+
+.spin-icon {
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--js-black);
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+#canvas-container {
+    margin-bottom: 20px;
+    background: var(--dark-grey);
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    border: 4px solid var(--js-black);
+}
+
+/* Efeito retro quadriculado no canvas */
+#game-canvas {
+    background-color: var(--light-grey);
+    background-image: linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+    background-size: 25px 25px;
+    border-radius: 4px;
+    max-width: 100%;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 600px) {
+    .app-header { padding: 15px; }
+    .module-card { flex-direction: row; }
+}

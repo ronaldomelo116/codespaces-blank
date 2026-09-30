@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Quest | Aprenda Programação</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">
+            <i class="bi bi-filetype-js"></i>
+            <span>JS Quest</span>
+        </div>
+        <div class="user-stats">
+            <div class="stat">
+                <i class="bi bi-lightning-fill"></i>
+                <span id="xp-counter">0 XP</span>
+            </div>
+        </div>
+    </header>
+
+    <main id="dashboard" class="container">
+        <section class="intro-card">
+            <h2>Sua Jornada JavaScript</h2>
+            <p>Complete as missões e mini-projetos para dominar a lógica de programação.</p>
+        </section>
+
+        <!-- Estado de carregamento da API -->
+        <div id="loading-state" class="text-center">
+            <i class="bi bi-arrow-repeat spin-icon"></i>
+            <p>Carregando missões da API...</p>
+        </div>
+
+        <div id="modules-container" class="modules-grid hidden">
+            <!-- Renderizado via Fetch -->
+        </div>
+    </main>
+
+    <section id="exercise-area" class="hidden">
+        <div class="exercise-container">
+            <button id="btn-close-exercise" class="btn-icon"><i class="bi bi-x-lg"></i></button>
+            
+            <div class="progress-bar-container">
+                <div id="exercise-progress" class="progress-bar"></div>
+            </div>
+
+            <!-- Área do Mini Projeto (Canvas) -->
+            <div id="canvas-container" class="hidden text-center">
+                <canvas id="game-canvas" width="300" height="150"></canvas>
+            </div>
+
+            <div id="question-container" class="question-content"></div>
+            <div id="options-container" class="options-grid"></div>
+
+            <div class="action-footer">
+                <button id="btn-verify" class="btn-primary" disabled>Verificar</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
