@@ -9,37 +9,44 @@
             {
                 "text": "Para armazenar o preço fixo da taxa de entrega que nunca muda durante a sessão, qual declaração você deve usar?",
                 "options": ["let taxa = 5.00;", "const taxa = 5.00;", "var taxa = 5.00;", "static taxa = 5.00;"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "A palavra-chave 'const' é usada para declarar variáveis cujo valor não pode ser reatribuído. Como a taxa é fixa, 'const' evita alterações acidentais no código."
             },
             {
                 "text": "Se você precisa concatenar o nome do cliente com o total do pedido em uma mensagem, qual é a sintaxe mais limpa (Template Literals)?",
                 "options": ["'Olá ' + cliente + ', total: R$' + total", "\"Olá \" + cliente + \", total: R$\" + total", "`Olá ${cliente}, total: R$${total}`", "String('Olá ', cliente, ' total: R$', total)"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "Template literals usam crases (`) e permitem injetar variáveis diretamente no texto usando a sintaxe ${variavel}, deixando o código limpo e evitando erros com os sinais de +."
             },
             {
                 "text": "Como declarar uma variável booleana indicando que a loja está aberta para receber pedidos?",
                 "options": ["const isOpen = 'true';", "let isOpen = true;", "var isOpen = 1;", "bool isOpen = true;"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Em JavaScript, o tipo booleano não usa aspas. 'true' (sem aspas) é o valor lógico verdadeiro. Usar 'let' permite fechar a loja depois mudando para false."
             },
             {
                 "text": "O cliente adicionou um item de R$ 35,00 e a entrega custa R$ 5,00. Como garantir que o JS some os valores ao invés de juntar os textos?",
                 "options": ["Number(preco) + Number(frete)", "preco.concat(frete)", "parseString(preco + frete)", "preco && frete"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "Se os valores vierem de inputs HTML, eles chegam como texto (String). A função Number() os converte para números matemáticos antes de somar."
             },
             {
                 "text": "Qual operador verifica se o valor total do pedido é estritamente igual (valor e tipo) a zero?",
                 "options": ["total = 0", "total == 0", "total === 0", "total != 0"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O operador '===' verifica o valor e o tipo da variável. '==' verificaria apenas o valor (o que poderia confundir o número 0 com a string '0')."
             },
             {
                 "text": "Como você declara um Array vazio para iniciar o carrinho de compras do usuário?",
                 "options": ["let carrinho = {};", "let carrinho = [];", "let carrinho = '';", "let carrinho = Array;"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Os colchetes [] representam um Array (lista). As chaves {} criariam um Objeto, e as aspas '' criariam um Texto vazio."
             },
             {
                 "text": "Para verificar o tipo de dado da variável 'telefoneCliente', qual operador utilizamos?",
                 "options": ["typeof telefoneCliente", "type(telefoneCliente)", "checkType telefoneCliente", "telefoneCliente.type"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "O operador 'typeof' é nativo do JavaScript e retorna uma string indicando se a variável é um 'string', 'number', 'boolean', 'object', etc."
             }
         ]
     },
@@ -53,37 +60,44 @@
             {
                 "text": "Como você acessa o nome da primeira rádio em uma array chamada 'estacoes'?",
                 "options": ["estacoes[1].nome", "estacoes[0].nome", "estacoes.primeiro.nome", "estacoes.nome[0]"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Os arrays em JavaScript são 'zero-indexed', ou seja, começam a contar a partir do 0. Logo, o primeiro item sempre será o índice [0]."
             },
             {
                 "text": "O usuário adicionou uma nova estação de rádio aos favoritos. Qual método insere esse item no final do Array?",
                 "options": ["estacoes.unshift(novaRadio)", "estacoes.pop(novaRadio)", "estacoes.add(novaRadio)", "estacoes.push(novaRadio)"],
-                "correctAnswer": 3
+                "correctAnswer": 3,
+                "explanation": "O método 'push()' adiciona um ou mais elementos ao final de um array. O 'unshift()' adicionaria no começo, e o 'pop()' removeria do final."
             },
             {
                 "text": "Como remover a última rádio da lista de histórico de reprodução?",
                 "options": ["historico.removeLast()", "historico.pop()", "historico.shift()", "historico.delete()"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O método 'pop()' remove o último elemento de um array e retorna esse elemento. 'shift()' removeria o primeiro da lista."
             },
             {
                 "text": "Você tem um objeto 'radioAtual = { nome: \"Sunset3D FM\", volume: 80 }'. Como alterar o volume para 100?",
                 "options": ["radioAtual[volume] = 100;", "radioAtual.volume = 100;", "radioAtual.set('volume', 100);", "radioAtual = { 100 };"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Para acessar ou alterar propriedades de um objeto, a forma mais direta e comum é usando a 'dot notation' (notação de ponto), escrevendo objeto.propriedade."
             },
             {
                 "text": "Qual método cria um NOVO array apenas com as rádios que têm o gênero 'Rock'?",
                 "options": ["estacoes.map()", "estacoes.reduce()", "estacoes.filter(r => r.genero === 'Rock')", "estacoes.find(r => r.genero === 'Rock')"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O método 'filter()' percorre o array e retorna um novo array apenas com os itens que passaram no teste lógico da função interna."
             },
             {
                 "text": "Qual método você usa para passar por todas as estações e renderizá-las no HTML, sem criar um novo array?",
                 "options": ["estacoes.forEach()", "estacoes.map()", "estacoes.loop()", "estacoes.every()"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "O 'forEach()' executa uma função para cada elemento do array, mas não retorna nada. É ideal para ações como injetar HTML na tela."
             },
             {
                 "text": "Como você verifica quantas rádios estão cadastradas no array 'estacoes'?",
                 "options": ["estacoes.size", "estacoes.count()", "estacoes.length", "estacoes.total"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "A propriedade 'length' retorna o número exato de elementos dentro de um Array ou o número de caracteres em uma String."
             }
         ]
     },
@@ -97,27 +111,32 @@
             {
                 "text": "Qual é a sintaxe correta de uma Arrow Function que calcula o frete recebendo a 'distancia' como parâmetro?",
                 "options": ["const frete = function(distancia) => {}", "const frete = (distancia) => {}", "function frete(distancia) => {}", "arrow frete(distancia) {}"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "A Arrow Function é definida armazenando uma estrutura com parênteses (parâmetros), a 'seta' (=>) e as chaves {} em uma constante."
             },
             {
                 "text": "Se a distância for maior que 10km, a entrega é bloqueada. Como escrever essa condicional?",
                 "options": ["if (distancia > 10) { return false; }", "if (distancia >= 10) { return false; }", "if distancia > 10 return false", "when (distancia > 10) { false }"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "A estrutura If clássica verifica a condição entre parênteses. 'distancia > 10' garante que exatamente acima de 10km a função retorna falso."
             },
             {
                 "text": "Como arredondar o valor final do frete (ex: 12.876) para apenas duas casas decimais em formato de string?",
                 "options": ["valor.round(2)", "Math.round(valor, 2)", "valor.toFixed(2)", "valor.decimals(2)"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O método '.toFixed(numero)' formata um número usando notação de ponto fixo. Ele retorna uma String, o que é ótimo para exibir preços na tela."
             },
             {
-                "text": "Ao invés de usar 'if / else if / else' para definir taxas por bairro, qual estrutura é mais limpa para múltiplas condições fixas?",
+                "text": "Ao invés de usar vários blocos 'if / else if' para definir taxas por bairro, qual estrutura é mais eficiente?",
                 "options": ["for loop", "while", "switch / case", "try / catch"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "A estrutura 'switch' avalia uma expressão e tenta combiná-la com um rótulo 'case'. É muito mais limpo para mapear valores fixos (como nomes de bairros)."
             },
             {
                 "text": "Como você chama/executa uma função nomeada 'calcularDistancia' passando os valores 5 e 10?",
                 "options": ["call calcularDistancia(5, 10);", "calcularDistancia(5, 10);", "run calcularDistancia[5, 10];", "calcularDistancia.start(5, 10);"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Para invocar uma função em JavaScript, basta escrever o nome dela seguido de parênteses contendo os argumentos que você quer passar."
             }
         ]
     },
@@ -131,61 +150,71 @@
             {
                 "text": "Como selecionar o botão de 'Comprar' que possui o ID 'btn-buy'?",
                 "options": ["document.querySelector('#btn-buy')", "document.getElement('.btn-buy')", "document.selectId('btn-buy')", "window.find('#btn-buy')"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "O 'querySelector' seleciona elementos baseados em seletores CSS. Como é um ID, usamos a hashtag (#) antes do nome."
             },
             {
-                "text": "Para fazer o botão mudar visualmente ao ser clicado, como adicionamos a classe CSS 'active' a ele?",
+                "text": "Para fazer o botão mudar visualmente ao ser clicado, como adicionamos a classe CSS 'active' a ele via JS?",
                 "options": ["botao.className += 'active'", "botao.style.class = 'active'", "botao.classList.add('active')", "botao.css('active')"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O 'classList.add()' é a forma mais segura e moderna de adicionar uma classe a um elemento sem sobrescrever as classes que ele já possui."
             },
             {
-                "text": "Como alterar o texto de um título <h1> selecionado para 'Promoção de Açaí'?",
+                "text": "Como alterar o texto de um título <h1> para 'Promoção de Açaí'?",
                 "options": ["titulo.value = 'Promoção de Açaí'", "titulo.textContent = 'Promoção de Açaí'", "titulo.html = 'Promoção de Açaí'", "titulo.text = 'Promoção de Açaí'"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "A propriedade 'textContent' define ou retorna o texto cru de um elemento, sendo mais seguro e performático que o 'innerHTML'."
             },
             {
-                "text": "Em um carrossel de imagens, qual método remove uma classe e adiciona outra alternadamente ao clicar (efeito toggle)?",
+                "text": "Em um menu sanfona, qual método de classe CSS liga/desliga a classe toda vez que executado?",
                 "options": ["elemento.classList.switch('visible')", "elemento.classList.toggle('visible')", "elemento.class.swap('visible')", "elemento.style.toggle('visible')"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O 'toggle()' verifica se a classe existe: se existir ele remove, se não existir ele adiciona. Perfeito para botões de abrir/fechar menus."
             },
             {
-                "text": "Como ocultar completamente um banner promocional alterando seu CSS diretamente pelo JS?",
+                "text": "Como ocultar completamente um banner alterando sua propriedade CSS diretamente pelo JS?",
                 "options": ["banner.style.display = 'none';", "banner.hide();", "banner.style.visibility = 'hidden';", "banner.css.display = 'none';"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "Através da propriedade '.style', podemos acessar e modificar qualquer regra de CSS inline do elemento. O 'display = none' remove o elemento do fluxo visual."
             }
         ]
     },
     {
         "id": 5,
-        "title": "Mini-Projeto: Controle de Estoque (EstoqueTools)",
-        "description": "Lógica de array para filtragem e extração de inventário.",
+        "title": "Arrays Avançados: Controle de Estoque (EstoqueTools)",
+        "description": "Lógica de array para filtragem e extração de inventário com texto lido por OCR.",
         "icon": "bi-boxes",
         "isMiniProject": false,
         "questions": [
             {
                 "text": "Como você retorna a soma total dos valores de todos os produtos no estoque usando um único método de Array?",
                 "options": ["estoque.sum()", "estoque.map()", "estoque.reduce((total, item) => total + item.valor, 0)", "estoque.filter()"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O 'reduce()' executa uma função redutora para cada elemento e acumula o resultado (neste caso, a variável 'total' começa no valor 0 e soma os valores)."
             },
             {
                 "text": "Você usou OCR para ler uma nota fiscal e o texto veio como '  Item01  '. Como remover os espaços em branco das pontas?",
                 "options": ["texto.clean()", "texto.strip()", "texto.trim()", "texto.replace(' ', '')"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O método 'trim()' remove os espaços em branco no início e no final de uma string, vital para limpar dados vindos do usuário ou de leitores OCR."
             },
             {
-                "text": "O OCR retornou uma lista de itens separados por vírgula ('modem,roteador,cabo'). Como transformar isso em um Array?",
+                "text": "O OCR retornou uma lista separada por vírgulas ('modem,roteador,cabo'). Como transformar essa string em um Array?",
                 "options": ["texto.toArray(',')", "texto.split(',')", "Array.from(texto)", "texto.parse(',')"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O método 'split()' divide uma String em uma lista (Array) de sub-strings, cortando no separador que você indicar (no caso, a vírgula)."
             },
             {
-                "text": "Como verificar se a string extraída contém a palavra 'Roteador'?",
+                "text": "Como verificar se o texto extraído da nota fiscal contém a palavra 'Roteador'?",
                 "options": ["texto.includes('Roteador')", "texto.has('Roteador')", "texto.find('Roteador')", "texto.search('Roteador')"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "O método 'includes()' retorna um booleano (true ou false) indicando se a string principal contém a string especificada."
             },
             {
-                "text": "Para evitar erros de case-sensitive (maiúsculas/minúsculas) na busca, o que fazer com a string antes de comparar?",
+                "text": "Para evitar erros de letras maiúsculas ou minúsculas na busca, o que fazer com o texto antes de comparar?",
                 "options": ["Usar texto.toSmall()", "Usar texto.toLowerCase()", "Usar texto.format()", "Usar texto.normalize()"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Ao converter toda a string para minúsculas usando 'toLowerCase()', você padroniza o dado, facilitando comparações exatas no sistema de busca."
             }
         ]
     },
@@ -197,58 +226,67 @@
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como escutar o clique no botão 'Finalizar Pedido'?",
+                "text": "Como colocar um 'escutador' no botão 'Finalizar Pedido' para quando ele for clicado?",
                 "options": ["botao.onClick(function)", "botao.listen('click', function)", "botao.addEventListener('click', function)", "botao.onEvent('click', function)"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O 'addEventListener' é o método padrão que anexa manipuladores de eventos ao elemento selecionado sem sobrescrever eventos antigos."
             },
             {
-                "text": "Ao submeter um formulário, a página recarrega automaticamente. Qual comando dentro do evento previne esse comportamento?",
+                "text": "Ao submeter um formulário, a página recarrega automaticamente. Qual comando dentro do evento previne esse recarregamento?",
                 "options": ["event.stop()", "event.halt()", "event.preventDefault()", "event.stopPropagation()"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O 'preventDefault()' cancela o comportamento padrão do navegador. No caso de tags <form>, impede que a página de recarregue ou envie dados para a mesma URL."
             },
             {
-                "text": "Para enviar os dados do pedido via link do WhatsApp, precisamos formatar o texto para a URL. Qual função nativa usamos?",
+                "text": "Para enviar os dados do pedido na URL do WhatsApp, os espaços viram códigos. Qual função nativa codifica o texto?",
                 "options": ["URLFormat(texto)", "encodeURIComponent(texto)", "toURL(texto)", "parseURI(texto)"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "A função 'encodeURIComponent()' substitui espaços e caracteres especiais pela formatação correta de URLs (como '%20' para espaços)."
             },
             {
-                "text": "Como capturar o valor que o usuário digitou no campo de input com ID 'obs-pedido'?",
-                "options": ["document.querySelector('#obs-pedido').value", "document.querySelector('#obs-pedido').text", "document.querySelector('#obs-pedido').content", "document.querySelector('#obs-pedido').innerHTML"],
-                "correctAnswer": 0
+                "text": "Como capturar o valor que o usuário acabou de digitar no campo de texto de observações?",
+                "options": ["input.value", "input.text", "input.content", "input.innerHTML"],
+                "correctAnswer": 0,
+                "explanation": "Elementos de formulário como <input>, <textarea> e <select> guardam o texto digitado pelo usuário dentro da propriedade 'value'."
             },
             {
-                "text": "Como abrir a URL do WhatsApp em uma nova aba do navegador via JavaScript?",
+                "text": "Como abrir o link gerado do WhatsApp em uma nova aba usando JavaScript?",
                 "options": ["window.redirect(url)", "window.open(url, '_blank')", "document.location = url", "browser.newTab(url)"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O método 'window.open()' com o segundo argumento '_blank' instrui o navegador a abrir o endereço em uma nova guia ou janela."
             }
         ]
     },
     {
         "id": 7,
         "title": "Armazenamento: LocalStorage",
-        "description": "Salvando itens do carrinho e preferências do usuário de forma segura.",
+        "description": "Salvando itens do carrinho e preferências do usuário de forma segura no navegador.",
         "icon": "bi-device-hdd",
         "isMiniProject": false,
         "questions": [
             {
-                "text": "Como você salva o tema escolhido pelo usuário (ex: 'dark') no navegador para a próxima visita?",
+                "text": "Como você salva o tema escolhido pelo usuário (ex: 'dark') para a próxima visita?",
                 "options": ["localStorage.save('tema', 'dark')", "localStorage.setItem('tema', 'dark')", "browser.storage.tema = 'dark'", "sessionStorage.push('tema', 'dark')"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Para guardar um dado fixo na máquina do usuário, usa-se 'setItem' passando a chave (nome) e o valor. Ele permanece salvo mesmo fechando o navegador."
             },
             {
-                "text": "O LocalStorage só aceita Strings. Como salvar o array completo do carrinho de compras?",
+                "text": "O LocalStorage só aceita Strings de texto. Como salvar o array completo do carrinho de compras?",
                 "options": ["localStorage.setItem('carrinho', carrinho.toString())", "localStorage.setItem('carrinho', JSON.stringify(carrinho))", "localStorage.setItem('carrinho', Array.parse(carrinho))", "localStorage.setItem('carrinho', carrinho)"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O método 'JSON.stringify()' pega o objeto ou array em JavaScript e o transforma em uma String JSON válida para ser salva no armazenamento."
             },
             {
-                "text": "Como recuperar os dados do carrinho e transformá-los de volta em um Array/Objeto JavaScript?",
+                "text": "Como recuperar os dados de texto do carrinho no LocalStorage e transformá-los de volta em um Array real?",
                 "options": ["JSON.parse(localStorage.getItem('carrinho'))", "JSON.objectify(localStorage.getItem('carrinho'))", "Array.from(localStorage.getItem('carrinho'))", "localStorage.getObject('carrinho')"],
-                "correctAnswer": 0
+                "correctAnswer": 0,
+                "explanation": "O 'JSON.parse()' faz o inverso do stringify: ele lê um texto estruturado em JSON e reconstrói o Array ou Objeto nativo na memória do JavaScript."
             },
             {
-                "text": "O cliente limpou o carrinho. Como remover APENAS o item 'carrinho' do LocalStorage, sem apagar o tema?",
+                "text": "O cliente limpou o carrinho. Como remover APENAS o item 'carrinho' do LocalStorage, sem apagar o tema dark salvo?",
                 "options": ["localStorage.clear()", "localStorage.delete('carrinho')", "localStorage.removeItem('carrinho')", "localStorage.carrinho = null"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O método 'removeItem()' apaga apenas a chave especificada. Se você usar o 'clear()', ele apagaria todas as chaves do site registradas naquele navegador."
             }
         ]
     },
@@ -262,61 +300,71 @@
             {
                 "text": "Qual função nativa do JavaScript moderno é utilizada para fazer requisições HTTP para APIs (como o ViaCEP)?",
                 "options": ["axios()", "ajax()", "fetch()", "get()"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O 'fetch()' é a API nativa dos navegadores modernos para realizar buscas assíncronas na rede, substituindo os antigos XMLHttpRequest."
             },
             {
-                "text": "O fetch retorna uma Promise. Como declaramos uma função para esperar que essa Promise seja resolvida de forma limpa?",
+                "text": "O fetch retorna uma Promise. Como declaramos uma função para 'esperar' que essa Promise resolva antes de continuar o código?",
                 "options": ["Usando function e .wait()", "Usando async e await", "Usando defer e sync", "Usando timeout()"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Adicionando a palavra 'async' na função, você ganha o direito de usar 'await' na frente da requisição, pausando a linha até os dados chegarem da internet."
             },
             {
-                "text": "Após receber a resposta bruta do fetch, qual método extrai o corpo da resposta em formato JSON?",
+                "text": "Após receber a resposta bruta do fetch, qual método extrai o corpo da resposta em formato de objeto JavaScript?",
                 "options": ["resposta.toJson()", "resposta.json()", "JSON.parse(resposta)", "resposta.body()"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O método '.json()' (que também é assíncrono e requer await) lê a resposta da requisição web e faz o parse do pacote recebido."
             },
             {
-                "text": "Se a API estiver fora do ar ou o usuário sem internet, qual bloco de código captura esse erro em uma função async?",
+                "text": "Se a API de CEP estiver fora do ar, qual bloco de código captura esse erro sem quebrar o site?",
                 "options": ["if / else", "try / catch", "then / catch", "error / handler"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "Em funções async/await, envolvemos as requisições em um bloco 'try' (tentar). Se qualquer coisa falhar, o código pula para o 'catch' (capturar) e o erro é tratado lá."
             },
             {
-                "text": "Em 'fetch(url, { method: 'POST' })', para que serve o POST?",
-                "options": ["Para pegar dados da API", "Para enviar dados confidenciais na URL", "Para enviar novos dados para o servidor (como salvar um pedido)", "Para apagar dados no servidor"],
-                "correctAnswer": 2
+                "text": "Em 'fetch(url, { method: 'POST' })', para que serve o método POST em APIs REST?",
+                "options": ["Para pegar dados da API", "Para enviar dados confidenciais na URL", "Para enviar/salvar novos dados no servidor", "Para apagar dados no servidor"],
+                "correctAnswer": 2,
+                "explanation": "Enquanto o GET é usado para buscar dados (como um CEP), o POST envia um 'corpo' (body) de informações para cadastrar algo (como um novo usuário ou pedido)."
             }
         ]
     },
     {
         "id": 9,
         "title": "Projeto: Dashboard Canvas",
-        "description": "Renderizando gráficos de vendas reais e assinaturas em tela usando HTML5 Canvas.",
+        "description": "Renderizando gráficos de vendas e visualização de dados usando HTML5 Canvas.",
         "icon": "bi-bar-chart",
         "isMiniProject": true,
         "questions": [
             {
-                "text": "Para começar a desenhar no Canvas (ex: gerar um gráfico de barras), qual é o primeiro método que devemos chamar após selecionar o elemento?",
+                "text": "Para começar a desenhar no Canvas (ex: gerar um gráfico de barras), qual é o primeiro método a ser chamado no JS?",
                 "options": ["canvas.start()", "canvas.getContext('2d')", "canvas.init('graphics')", "canvas.setRenderer('2d')"],
-                "correctAnswer": 1
+                "correctAnswer": 1,
+                "explanation": "O 'getContext('2d')' inicializa a API de desenho bidimensional e retorna o objeto (geralmente guardado na variável 'ctx') que contém todos os métodos de pintura."
             },
             {
-                "text": "Como desenhar um retângulo que representa a barra de vendas do mês usando o Contexto 2D (ctx)?",
+                "text": "Como desenhar um retângulo sólido que representa uma barra do gráfico?",
                 "options": ["ctx.drawRect(x, y, width, height)", "ctx.rect(x, y, width, height)", "ctx.fillRect(x, y, width, height)", "ctx.createBox(x, y, width, height)"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O método 'fillRect' preenche um retângulo na tela. Os argumentos ditam a coordenada X, coordenada Y, Largura e Altura, respectivamente."
             },
             {
-                "text": "Para mudar a cor da barra do gráfico para a cor da marca (ex: Azul), qual propriedade modificamos?",
-                "options": ["ctx.color = 'blue';", "ctx.fillStyle = 'blue';", "ctx.backgroundColor = 'blue';", "ctx.strokeColor = 'blue';"],
-                "correctAnswer": 1
+                "text": "Para mudar a cor do preenchimento da barra para amarelo JavaScript, qual propriedade do contexto modificamos?",
+                "options": ["ctx.color = '#F7DF1E';", "ctx.fillStyle = '#F7DF1E';", "ctx.backgroundColor = '#F7DF1E';", "ctx.strokeColor = '#F7DF1E';"],
+                "correctAnswer": 1,
+                "explanation": "A propriedade 'fillStyle' define a cor ou estilo que será usado nas próximas operações de preenchimento (como fillRect ou fillText)."
             },
             {
-                "text": "Ao criar um painel de assinatura digital (onde o usuário desenha com o mouse), qual comando move a 'caneta' sem riscar a tela?",
-                "options": ["ctx.moveTo(x, y)", "ctx.lineTo(x, y)", "ctx.jumpTo(x, y)", "ctx.hover(x, y)"],
-                "correctAnswer": 0
+                "text": "Para desenhar os eixos do gráfico usando linhas simples, qual comando prepara uma nova trilha de desenho?",
+                "options": ["ctx.beginPath()", "ctx.startLine()", "ctx.newLine()", "ctx.initPath()"],
+                "correctAnswer": 0,
+                "explanation": "O 'beginPath()' diz ao canvas para iniciar um novo caminho. Sem ele, se você mudar as cores de novas linhas, as linhas antigas também mudarão de cor."
             },
             {
-                "text": "Como apagar todo o conteúdo desenhado no Canvas (útil para o botão 'Limpar Gráfico' ou 'Refazer Assinatura')?",
+                "text": "Como apagar todo o conteúdo desenhado (útil para atualizar o gráfico com novos dados)?",
                 "options": ["canvas.clear()", "ctx.eraseAll()", "ctx.clearRect(0, 0, canvas.width, canvas.height)", "ctx.reset()"],
-                "correctAnswer": 2
+                "correctAnswer": 2,
+                "explanation": "O método 'clearRect()' limpa pixels em uma área retangular específica, tornando-os transparentes. Passar 0,0 até a largura e altura totais do canvas apaga tudo."
             }
         ]
     }
