@@ -1,0 +1,23 @@
+{
+  "name": "JS Quest | Aprenda Programação",
+  "short_name": "JS Quest",
+  "description": "Plataforma gamificada para dominar a lógica de programação com JavaScript.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#F5F5F5",
+  "theme_color": "#F7DF1E",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "./assets/img/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./assets/img/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

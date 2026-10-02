@@ -1,3 +1,12 @@
+// Registro do Service Worker (PWA)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('Service Worker registrado com sucesso!', reg))
+            .catch(err => console.error('Erro ao registrar Service Worker:', err));
+    });
+}
+
 // Gerenciamento de Estado
 let userData = JSON.parse(localStorage.getItem('jsQuestData')) || {
     xp: 0,

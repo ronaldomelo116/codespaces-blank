@@ -415,5 +415,134 @@
                 "explanation": "Colocar '<script src=\"script.js\" type=\"module\">' avisa ao navegador que ele deve habilitar as regras rígidas do ES Modules (como import/export local e segurança contra vazamento escopo global)."
             }
         ]
+    },
+    {
+        "id": 16,
+        "title": "Projeto: Renderizando Catálogos com Map()",
+        "description": "Utilizando o método .map() para converter dados brutos em elementos visuais HTML e aplicar descontos em massa.",
+        "icon": "bi-images",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "O backend enviou uma lista de preços: [10, 20, 30]. Como usar o .map() para criar uma NOVA lista aplicando 10% de desconto em todos os itens?",
+                "options": ["precos.map(p => p - 10%)", "precos.map(p => p * 0.9)", "precos.forEach(p => p * 0.9)", "precos.reduce(p => p * 0.9)"],
+                "correctAnswer": 1,
+                "explanation": "O método .map() itera sobre cada item e retorna um novo array. Multiplicar o valor por 0.9 é a forma matemática correta de calcular o valor com 10% de desconto no JavaScript."
+            },
+            {
+                "text": "Ao renderizar o cardápio da pizzaria na tela, qual é a principal vantagem do .map() em relação ao .forEach()?",
+                "options": ["Ele é mais rápido para o processador.", "Ele altera o array original de forma permanente.", "Ele retorna um novo array, perfeito para encadear com .join('') e injetar no HTML.", "Ele não precisa de arrow functions."],
+                "correctAnswer": 2,
+                "explanation": "Diferente do .forEach() que não retorna nada ('undefined'), o .map() retorna um novo array. Você mapeia objetos para strings HTML (`<li>${item}</li>`) e usa o .join('') para jogar tudo na tela de uma vez."
+            },
+            {
+                "text": "Você mapeou um array de objetos complexos de produtos usando: `produtos.map(p => p.nome)`. O que o novo array conterá?",
+                "options": ["Os objetos originais inalterados.", "Apenas os nomes dos produtos em formato de string.", "Um erro de sintaxe estrutural.", "O tamanho total do array."],
+                "correctAnswer": 1,
+                "explanation": "Você extraiu apenas a propriedade 'nome'. O .map() vai descartar o resto do objeto e criar um array limpo contendo apenas as strings com os nomes (ex: ['Modem', 'Roteador', 'Cabo'])."
+            }
+        ]
+    },
+    {
+        "id": 17,
+        "title": "Projeto: Fechamento de Caixa com Reduce()",
+        "description": "Dominando o acumulador .reduce() para consolidar dados financeiros e calcular o valor total de um carrinho de compras complexo.",
+        "icon": "bi-wallet2",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Em um array de números [5, 10, 15], o que os parâmetros (acumulador, atual) do .reduce() representam na PRIMEIRA repetição, caso você não passe um valor inicial?",
+                "options": ["O acumulador é 5 e o atual é 10.", "Ambos os valores começam como 5.", "O acumulador começa em 0 e o atual é 5.", "O acumulador é o array completo."],
+                "correctAnswer": 0,
+                "explanation": "Se você não passar um 'valor inicial' após a função do reduce, o acumulador assume automaticamente o primeiro valor do array (5), e a iteração começa no segundo elemento (10)."
+            },
+            {
+                "text": "Para calcular o valor final de um carrinho onde cada item possui quantidade, ex: `{preco: 20, qtd: 2}`, qual é a sintaxe correta e mais segura do reduce?",
+                "options": ["carrinho.reduce((acc, item) => acc + item.preco, 0)", "carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0)", "carrinho.reduce((item) => item.preco * item.qtd)", "carrinho.map().reduce()"],
+                "correctAnswer": 1,
+                "explanation": "Como estamos lidando com objetos (e não números soltos), o ', 0' no final é OBRIGATÓRIO para forçar o acumulador a nascer como um número zero. Dentro, multiplicamos o preço pela quantidade do item atual."
+            },
+            {
+                "text": "O método .reduce() serve estritamente para somar números?",
+                "options": ["Sim, é uma função exclusivamente matemática do JS.", "Não, ele pode acumular e construir novos arrays, objetos e até concatenar strings complexas.", "Sim, mas aceita apenas números inteiros (int).", "Não, ele serve apenas para reduzir o tamanho de um array pela metade."],
+                "correctAnswer": 1,
+                "explanation": "O .reduce() é o verdadeiro 'canivete suíço' dos arrays. Você pode usá-lo para agrupar objetos por categoria em um novo objeto, transformar matrizes, entre muitas outras arquiteturas avançadas de dados."
+            }
+        ]
+    },
+    {
+        "id": 18,
+        "title": "Geolocalização: Rastreando Entregas",
+        "description": "Utilizando a API nativa do navegador para capturar coordenadas GPS do cliente.",
+        "icon": "bi-geo-alt",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Qual é o objeto nativo do JavaScript que nos dá acesso à localização do usuário?",
+                "options": ["window.gps", "navigator.geolocation", "document.location", "browser.maps"],
+                "correctAnswer": 1,
+                "explanation": "O objeto 'navigator.geolocation' é a interface padrão da Web API para acessar dados de posicionamento do dispositivo, desde que o usuário conceda permissão."
+            },
+            {
+                "text": "O método getCurrentPosition() é assíncrono e recebe funções de callback (sucesso e erro). Como você captura as coordenadas de latitude e longitude se der certo?",
+                "options": ["posicao.coords.latitude", "posicao.lat", "posicao.gps.latitude", "posicao.get('latitude')"],
+                "correctAnswer": 0,
+                "explanation": "No callback de sucesso, a API retorna um objeto GeolocationPosition. As propriedades exatas ficam dentro do sub-objeto 'coords'."
+            },
+            {
+                "text": "O que acontece se o cliente clicar em 'Bloquear' quando o navegador pedir acesso à localização?",
+                "options": ["O site fecha automaticamente.", "O JS burla o bloqueio e pega pelo IP.", "O callback de erro é acionado, retornando um código de permissão negada.", "O navegador trava na tela de carregamento."],
+                "correctAnswer": 2,
+                "explanation": "A segurança web impede o acesso forçado. O callback de erro (segundo parâmetro do getCurrentPosition) é disparado, permitindo que você mostre um aviso amigável pedindo o CEP manualmente."
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "title": "Projeto: Game Loop no Canvas",
+        "description": "Criando animações contínuas a 60 frames por segundo para jogos e elementos visuais retro 16-bit.",
+        "icon": "bi-joystick",
+        "isMiniProject": true,
+        "questions": [
+            {
+                "text": "Para criar um loop infinito que atualiza a tela de um jogo suavemente a 60 FPS, qual função nativa substitui o antigo setInterval()?",
+                "options": ["requestAnimationFrame()", "setGameLoop()", "canvas.animate()", "window.loop()"],
+                "correctAnswer": 0,
+                "explanation": "O 'requestAnimationFrame' avisa ao navegador que você deseja realizar uma animação, sincronizando a execução com a taxa de atualização do monitor, poupando bateria e processamento."
+            },
+            {
+                "text": "No início de cada novo frame (quadro) do seu jogo, qual é a primeira coisa que você deve fazer no Canvas antes de desenhar o personagem na nova posição?",
+                "options": ["Mudar a cor de fundo.", "Salvar o frame no LocalStorage.", "Apagar a tela inteira com ctx.clearRect().", "Aumentar o XP do jogador."],
+                "correctAnswer": 2,
+                "explanation": "Se você não usar o 'clearRect()' para limpar o quadro anterior, o rastro do personagem ficará marcado na tela, criando um efeito de borrão em vez de movimento."
+            },
+            {
+                "text": "Como você detecta uma colisão simples (AABB) entre dois quadrados (ex: o carro do jogador e um obstáculo na rodovia)?",
+                "options": ["Usando a API ctx.checkCollision()", "Comparando se a distância entre os eixos X e Y de ambos se sobrepõem matematicamente.", "Checando se eles têm a mesma cor.", "Verificando o tamanho da imagem carregada."],
+                "correctAnswer": 1,
+                "explanation": "No Canvas puro, colisões são pura matemática. Verificamos se o lado direito do quadrado A passou do lado esquerdo do quadrado B, e assim por diante nos eixos X e Y."
+            }
+        ]
+    },
+    {
+        "id": 20,
+        "title": "Bancos de Dados NoSQL (BaaS)",
+        "description": "Compreendendo a lógica de salvar e ler dados na nuvem (como Firebase).",
+        "icon": "bi-cloud-check",
+        "isMiniProject": false,
+        "questions": [
+            {
+                "text": "Em bancos de dados NoSQL baseados em documentos, os dados são armazenados de forma muito parecida com qual estrutura nativa do JavaScript?",
+                "options": ["Arrays (Vetores)", "Functions (Funções)", "Objects (Objetos JSON)", "Strings de Texto"],
+                "correctAnswer": 2,
+                "explanation": "Bancos NoSQL armazenam dados no formato de documentos estruturados como Objetos JSON reais (chaves e valores), o que torna a integração com o front-end JavaScript extremamente natural."
+            },
+            {
+                "text": "Ao enviar um novo pedido finalizado para o banco de dados na nuvem, qual tipo de operação nós estamos realizando?",
+                "options": ["Síncrona (trava a tela até salvar)", "Assíncrona (Promise/Await)", "Looping contínuo", "Manipulação de DOM"],
+                "correctAnswer": 1,
+                "explanation": "A comunicação com a rede sempre deve ser assíncrona. Usamos 'await' para que o navegador não congele enquanto o banco de dados confirma que o pedido foi salvo com sucesso."
+            }
+        ]
     }
 ]
