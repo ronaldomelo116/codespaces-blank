@@ -51,14 +51,14 @@ const somCorrect = new Audio('./assets/sounds/correct.mp3');
 const somWrong = new Audio('./assets/sounds/wrong.mp3');
 const somCompleted = new Audio('./assets/sounds/completed.mp3');
 
-// Inicialização e Fetch da "API"
+// Inicialização chamando a nossa nova API segura
 async function init() {
     updateUI();
     try {
-        await new Promise(resolve => setTimeout(resolve, 800)); // Simula tempo de rede
-        const response = await fetch('./dados.json');
+        // Agora fazemos fetch na nossa pasta /api no servidor
+        const response = await fetch('./api/modulos');
         
-        if (!response.ok) throw new Error("Falha ao carregar dados");
+        if (!response.ok) throw new Error("Falha ao carregar dados do servidor");
         
         curriculum = await response.json();
         
@@ -66,7 +66,7 @@ async function init() {
         modulesContainer.classList.remove('hidden');
         renderModules();
     } catch (error) {
-        loadingState.innerHTML = `<p style="color: red;">Erro ao carregar os dados. Verifique se o arquivo dados.json está na mesma pasta e se você está usando um servidor local (Live Server).</p>`;
+        loadingState.innerHTML = `<p style="color: red;">Erro ao carregar servidor. Verifique sua conexão.</p>`;
         console.error(error);
     }
 }
@@ -200,8 +200,7 @@ function selectOption(index, btnElement) {
     btnVerify.disabled = false;
 }
 
-btnVerify.addEventListener('click', () => {
-    const question = currentModule.questions[currentQuestionIndex];
+btnVerify.addEventListener('click', async () => {
     const optionsButtons = document.querySelectorAll('.option-btn');
     
     // Se o botão estiver como "Continuar", ele avança para a próxima tela
@@ -216,43 +215,64 @@ btnVerify.addEventListener('click', () => {
     }
 
     // ==========================================
-    // Lógica ao clicar em "Verificar" (Avaliação)
+    // Lógica ao clicar em "Verificar" (Comunicação com o Back-end)
     // ==========================================
-    feedbackPanel.classList.remove('hidden', 'success', 'error');
+    
+    // Mostra pro usuário que está carregando (evita duplo clique)
+    btnVerify.textContent = "Verificando...";
+    btnVerify.disabled = true;
+    optionsButtons.forEach(btn => btn.style.pointerEvents = 'none');
 
-    if (selectedOptionIndex === question.correctAnswer) {
-        somCorrect.currentTime = 0;
-        somCorrect.play();
-        // Acertou
-        optionsButtons[selectedOptionIndex].classList.add('correct');
-        userData.xp += 25; 
+    try {
+        // Envia os dados para a nossa API no servidor Vercel
+        const response = await fetch('/api/verificar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                moduloId: currentModule.id,
+                questionIndex: currentQuestionIndex,
+                selectedOption: selectedOptionIndex
+            })
+        });
+
+        const resultado = await response.json();
         
-        feedbackPanel.classList.add('success');
-        feedbackTitle.innerHTML = '<i class="bi bi-check-circle-fill"></i> Mandou bem!';
-        feedbackText.textContent = question.explanation || "Resposta exata! Você aplicou o conceito corretamente.";
-        
-        // Se for o projeto em canvas, aumenta o gráfico
-        if (currentModule.isMiniProject) {
-            acertosNoMiniProjeto++;
-            drawDashboardChart(acertosNoMiniProjeto); 
+        feedbackPanel.classList.remove('hidden', 'success', 'error');
+
+        // Usa a resposta do servidor para saber se acertou
+        if (resultado.acertou) {
+            if(typeof somAcerto !== 'undefined') { somAcerto.currentTime = 0; somAcerto.play(); }
+            
+            optionsButtons[selectedOptionIndex].classList.add('correct');
+            userData.xp += 25; 
+            
+            feedbackPanel.classList.add('success');
+            feedbackTitle.innerHTML = '<i class="bi bi-check-circle-fill"></i> Mandou bem!';
+            feedbackText.textContent = resultado.explanation;
+            
+            if (currentModule.isMiniProject) {
+                acertosNoMiniProjeto++;
+                drawDashboardChart(acertosNoMiniProjeto); 
+            }
+        } else {
+            if(typeof somErro !== 'undefined') { somErro.currentTime = 0; somErro.play(); }
+            
+            optionsButtons[selectedOptionIndex].classList.add('wrong');
+            // O servidor nos diz qual era a correta para mostrarmos ao aluno
+            optionsButtons[resultado.correctAnswer].classList.add('correct'); 
+            
+            feedbackPanel.classList.add('error');
+            feedbackTitle.innerHTML = '<i class="bi bi-x-circle-fill"></i> Ops, não foi dessa vez.';
+            feedbackText.textContent = resultado.explanation;
         }
-    } else {
-        somWrong.currentTime = 0;
-        somWrong.play();
-        // Errou
-        optionsButtons[selectedOptionIndex].classList.add('wrong');
-        optionsButtons[question.correctAnswer].classList.add('correct'); // Mostra qual era a certa
         
-        feedbackPanel.classList.add('error');
-        feedbackTitle.innerHTML = '<i class="bi bi-x-circle-fill"></i> Ops, não foi dessa vez.';
-        feedbackText.textContent = question.explanation || "A opção correta está destacada em verde. Fique atento à sintaxe!";
+    } catch (error) {
+        console.error("Erro na validação:", error);
+        alert("Erro ao se comunicar com o servidor.");
     }
     
-    // Desabilita os botões para o usuário não mudar a resposta depois de verificar
-    optionsButtons.forEach(btn => btn.style.pointerEvents = 'none');
-    
-    // Muda o texto do botão para avançar
     btnVerify.textContent = "Continuar";
+    btnVerify.disabled = false;
 });
 
 function finishModule() {
