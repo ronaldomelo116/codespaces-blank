@@ -36,10 +36,20 @@ const xpCounter = document.getElementById('xp-counter');
 const progressBar = document.getElementById('exercise-progress');
 const canvasContainer = document.getElementById('canvas-container');
 
+const exerciseBox = document.getElementById('main-exercise-box');
+const completionScreen = document.getElementById('completion-screen');
+const completedModuleName = document.getElementById('completed-module-name');
+const btnReturnDashboard = document.getElementById('btn-return-dashboard');
+
 // Elementos de feedback
 const feedbackPanel = document.getElementById('feedback-panel');
 const feedbackTitle = document.getElementById('feedback-title');
 const feedbackText = document.getElementById('feedback-text');
+
+const somClick = new Audio('./assets/sounds/click.mp3');
+const somCorrect = new Audio('./assets/sounds/correct.mp3');
+const somWrong = new Audio('./assets/sounds/wrong.mp3');
+const somCompleted = new Audio('./assets/sounds/completed.mp3');
 
 // Inicialização e Fetch da "API"
 async function init() {
@@ -99,6 +109,9 @@ function renderModules() {
 }
 
 function startModule(mod) {
+    somClick.currentTime = 0;
+    somClick.play();
+
     currentModule = mod;
     currentQuestionIndex = 0;
     acertosNoMiniProjeto = 0; // Zera os acertos ao iniciar a fase
@@ -176,6 +189,9 @@ function loadQuestion() {
 
 function selectOption(index, btnElement) {
     selectedOptionIndex = index;
+
+    somClick.currentTime = 0;
+    somClick.play();
     // Remove a marcação de todas as outras opções
     document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected'));
     btnElement.classList.add('selected');
@@ -205,6 +221,8 @@ btnVerify.addEventListener('click', () => {
     feedbackPanel.classList.remove('hidden', 'success', 'error');
 
     if (selectedOptionIndex === question.correctAnswer) {
+        somCorrect.currentTime = 0;
+        somCorrect.play();
         // Acertou
         optionsButtons[selectedOptionIndex].classList.add('correct');
         userData.xp += 25; 
@@ -219,6 +237,8 @@ btnVerify.addEventListener('click', () => {
             drawDashboardChart(acertosNoMiniProjeto); 
         }
     } else {
+        somWrong.currentTime = 0;
+        somWrong.play();
         // Errou
         optionsButtons[selectedOptionIndex].classList.add('wrong');
         optionsButtons[question.correctAnswer].classList.add('correct'); // Mostra qual era a certa
@@ -236,18 +256,37 @@ btnVerify.addEventListener('click', () => {
 });
 
 function finishModule() {
-    // Marca o módulo como concluído se ainda não estava
+    // 1. Salva o progresso
     if (!userData.completedModules.includes(currentModule.id)) {
         userData.completedModules.push(currentModule.id);
     }
     saveProgress();
-    closeExercise();
-    renderModules(); // Re-renderiza para desbloquear o próximo módulo
+    
+    // 2. Dispara o som de vitória
+    somCompleted.currentTime = 0;
+    somCompleted.play();
+
+    // 3. Oculta as perguntas e exibe a tela de vitória
+    exerciseBox.classList.add('hidden');
+    completedModuleName.textContent = currentModule.title;
+    completionScreen.classList.remove('hidden');
 }
 
+// Botão da tela de vitória para voltar ao mapa
+btnReturnDashboard.addEventListener('click', () => {
+    somClick.currentTime = 0;
+    somClick.play();
+    closeExercise();
+    renderModules(); // Re-renderiza para desbloquear o próximo módulo
+});
+
 function closeExercise() {
+    somClick.currentTime = 0;
+    somClick.play();
     dashboard.classList.remove('hidden');
     exerciseArea.classList.add('hidden');
+    exerciseBox.classList.remove('hidden');
+    completionScreen.classList.add('hidden');
 }
 
 // Fechar no "X"

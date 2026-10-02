@@ -52,7 +52,7 @@
     </main>
 
     <section id="exercise-area" class="hidden">
-        <div class="exercise-container">
+        <div class="exercise-container" id="main-exercise-box">
             <button id="btn-close-exercise" class="btn-icon"><i class="bi bi-x-lg"></i></button>
             
             <div class="progress-bar-container">
@@ -79,6 +79,14 @@
                 <button id="btn-verify" class="btn-primary" disabled>Verificar</button>
             </div>
 
+        </div>
+        <div id="completion-screen" class="hidden completion-screen">
+            <div class="completion-content">
+                <i class="bi bi-trophy-fill trophy-icon"></i>
+                <h2>Módulo Concluído!</h2>
+                <p>Você dominou <strong id="completed-module-name"></strong> e ganhou XP!</p>
+                <button id="btn-return-dashboard" class="btn-primary">Continuar Jornada</button>
+            </div>
         </div>
     </section>
 
